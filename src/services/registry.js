@@ -17,7 +17,7 @@ import PubSub from 'pubsub-js'
 
 // TODO: check number param
 const big = (number) => new Eth.BN(number.toString(10))
-const tenToTheNinth = big(10).pow(big(9))
+const tenToTheNinth = big(10).pow(big(18))
 const tenToTheEighteenth = big(10).pow(big(18))
 
 const parameters = keyMirror({

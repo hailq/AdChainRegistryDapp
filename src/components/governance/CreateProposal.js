@@ -209,7 +209,7 @@ class CreateProposal extends Component {
 
   formatProposedValue (name, value) {
     const big = (value) => new Eth.BN(value.toString(10))
-    const tenToTheNinth = big(10).pow(big(9))
+    const tenToTheNinth = big(10).pow(big(18))
     const bigTokens = big(value).mul(tenToTheNinth).toString(10)
     try {
       switch (name) {

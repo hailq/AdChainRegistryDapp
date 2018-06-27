@@ -3,8 +3,9 @@ import { getProvider } from '../services/provider'
 import { contractsURL } from '../models/urls'
 
 export const getAbi = async (contract) => {
+
   const storageKey = `adchain:abi:${contract}`
-  const cached = window.sessionStorage.getItem(storageKey)
+  const cached = window.localStorage.getItem(storageKey)
 
   try {
     if (cached) {
@@ -18,7 +19,7 @@ export const getAbi = async (contract) => {
   const json = await data.json()
 
   try {
-    window.sessionStorage.setItem(storageKey, JSON.stringify(json))
+    window.localStorage.setItem(storageKey, JSON.stringify(json))
   } catch (error) {
     console.error(error)
   }
@@ -28,6 +29,7 @@ export const getAbi = async (contract) => {
 
 export const getRegistry = async (account, provider) => {
   const registryArtifact = await getAbi('Registry')
+
   const Registry = contract(registryArtifact)
   Registry.defaults({from: account})
   Registry.setProvider(provider || getProvider())
@@ -38,7 +40,7 @@ export const getRegistry = async (account, provider) => {
 export const getToken = async (account) => {
   const registry = await getRegistry()
   const tokenAddress = await registry.token.call()
-  const tokenArtifact = await getAbi('HumanStandardToken')
+  const tokenArtifact = await getAbi('EIP20')
   const Token = contract(tokenArtifact)
   Token.defaults({from: account})
   Token.setProvider(getProvider())

@@ -16,7 +16,7 @@ import IndividualGuideModal from './IndividualGuideModal'
 import './DomainVoteRevealContainer.css'
 
 const big = (number) => new Eth.BN(number.toString(10))
-const tenToTheNinth = big(10).pow(big(9))
+const tenToTheNinth = big(10).pow(big(18))
 
 class DomainVoteRevealContainer extends Component {
   constructor (props) {

@@ -1,4 +1,5 @@
-export const network = process.env.REACT_APP_NETWORK
+// export const network = process.env.REACT_APP_NETWORK
+export const network = 'unknown'
 
 export const organization = process.env.REACT_APP_ORGANIZATION
 
